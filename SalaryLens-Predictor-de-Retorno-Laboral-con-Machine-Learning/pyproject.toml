@@ -1,0 +1,32 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "salarlens_predictor"
+version = "0.0.1"
+description = "Modelo de regresi\u00f3n en Python para la predicci\u00f3n de salarios basado en variables acad\u00e9micas y trayectoria profesional."
+authors = [
+  { name = "Alejandro Santos" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License"
+]
+requires-python = "~=3.11.0"
+
+
+[tool.ruff]
+line-length = 99
+src = ["salarlens_predictor"]
+include = ["pyproject.toml", "salarlens_predictor/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["salarlens_predictor"]
+force-sort-within-sections = true
+

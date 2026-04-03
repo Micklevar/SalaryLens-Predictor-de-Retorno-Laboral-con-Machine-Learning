@@ -1,3 +1,4 @@
+import pandas as pd
 from pathlib import Path
 
 from loguru import logger
@@ -11,18 +12,24 @@ app = typer.Typer()
 
 @app.command()
 def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    input_path: Path = RAW_DATA_DIR / "dataset.csv",
+    input_path: Path = RAW_DATA_DIR / "SalaryLens-Predictor-de-Retorno-Laboral-con-Machine-Learning/data/raw/job_salary_prediction_dataset.csv",
     output_path: Path = PROCESSED_DATA_DIR / "dataset.csv",
-    # ----------------------------------------------
+    
 ):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Processing dataset...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Processing dataset complete.")
-    # -----------------------------------------
+    logger.info(f"Leyendo datos desde {input_path}...")
+
+    # 1.- Verificar si el archivo existe antes de intentar leerlo
+    if not input_path.exist():
+        logger.error(f"Error, no se encontro el archivo en: {input_path}")
+        return
+
+    # 2.- Lectura del archivo
+    df = pd.read_csv(input_path)
+
+    # 3.- Mostrar informacion basica en los logs
+    logger.info(f"Dataset cargado exitosamente. Filas: {df.shape}, columnas: {df.shape[1]}")
+
+
 
 
 if __name__ == "__main__":

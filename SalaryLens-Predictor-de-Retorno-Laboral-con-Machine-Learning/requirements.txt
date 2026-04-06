@@ -13,4 +13,8 @@ ruff
 scikit-learn
 tqdm
 typer
+seaborn
+ipykernel
+ydata-profiling
+setuptools
 -e .

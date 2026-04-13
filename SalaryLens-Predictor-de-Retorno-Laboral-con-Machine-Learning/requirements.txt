@@ -17,4 +17,5 @@ seaborn
 ipykernel
 ydata-profiling
 setuptools
+ipyidgets
 -e .
